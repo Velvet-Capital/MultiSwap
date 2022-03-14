@@ -100,7 +100,7 @@ class App extends Component {
       "0xcF6BB5389c92Bdda8a3747Ddb454cB7a64626C63", // Venus
       "0x2170Ed0880ac9A755fd29B2688956BD959F933F8"  // ETH
     ]
-    await this.state.contract.methods.generatePortfolioWith10Assets(portfolio).send({ from: this.state.account, value: 100 });
+    await this.state.contract.methods.generatePortfolioWith10Assets(portfolio).send({ from: this.state.account, value: this.state.value });
   }
 
   render() {
@@ -118,9 +118,10 @@ class App extends Component {
         {this.state.calculatedOutput}
 
         <HeaderSubheader as='h2'>Create a Portfolio with 10 Assets</HeaderSubheader>
-        <p>The value will be equally swapped into 10 tokens</p>
-        <Button onClick={this.createPortfolio} color="green" type="submit" style={{ margin: "20px" }}>Generate Portfolio!</Button>
-
+        <p>The value will be equally swapped into the following 10 tokens:</p>
+        <p>CAKE, BUSD, Alpaca, Belt, Bunny, NRV, TKO, VAI, Venus, ETH</p>
+        <Input style={{ width: "600px", padding: 3 }} required type="text" placeholder="Value" name="value" onChange={this.handleInputChange}></Input><br></br>
+        <Button onClick={this.createPortfolio} color="green" type="submit" style={{ margin: "20px" }}>Generate Portfolio!</Button><br></br>
       </div >
     );
   }
