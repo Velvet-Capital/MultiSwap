@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Swap from "./abis/Swap.json";
 import detectEthereumProvider from '@metamask/detect-provider';
 import Web3 from 'web3';
-import { Grid, Button, Form, Input, Label, Card, Header, HeaderSubheader } from 'semantic-ui-react';
+import { Button, Form, Input, Header, HeaderSubheader } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 
@@ -120,8 +120,10 @@ class App extends Component {
         <HeaderSubheader as='h2'>Create a Portfolio with 10 Assets</HeaderSubheader>
         <p>The value will be equally swapped into the following 10 tokens:</p>
         <p>CAKE, BUSD, Alpaca, Belt, Bunny, NRV, TKO, VAI, Venus, ETH</p>
-        <Input style={{ width: "600px", padding: 3 }} required type="text" placeholder="Value" name="value" onChange={this.handleInputChange}></Input><br></br>
-        <Button onClick={this.createPortfolio} color="green" type="submit" style={{ margin: "20px" }}>Generate Portfolio!</Button><br></br>
+        <Form onSubmit={this.createPortfolio}>
+          <Input style={{ width: "600px", padding: 3 }} required type="text" placeholder="Value" name="value" onChange={this.handleInputChange}></Input><br></br>
+          <Button color="green" type="submit" style={{ margin: "20px" }}>Generate Portfolio!</Button><br></br>
+        </Form>
       </div >
     );
   }
